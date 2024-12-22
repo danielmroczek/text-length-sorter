@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sort Text Lines in Vue with Bootstrap</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/vue@2" defer></script>
+<script src="script.js" type="module" defer></script>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+  :root {
+    --bg-color: #ffffff;
+    --text-color: #212529;
+    --card-bg: #ffffff;
+    --border-color: rgba(0,0,0,.125);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color: #212529;
+      --text-color: #f8f9fa;
+      --card-bg: #343a40;
+      --border-color: rgba(255,255,255,.125);
+    }
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+
+  .card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+  }
+
+  .form-control, .form-select {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+  }
+
+  .form-control:focus, .form-select:focus {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+  }
+</style>
+</head>
+<body>
+
+<div id="app" class="container mt-5">
+  <!-- Header -->
+  <div class="row">
+    <div class="col">
+      <h2 class="text-center">Sort Text Lines By Length</h2>
+    </div>
+  </div>
+
+  <!-- Font selection and sort direction -->
+  <div class="row mb-3">
+    <div class="col">
+      <label for="fontSelect" class="form-label">Font:</label>
+      <select id="fontSelect" class="form-select w-100" v-model="selectedFont" @change="updateDisplay">
+        <option v-for="font in fonts" :value="font">{{ font }}</option>
+      </select>
+    </div>
+    <div class="col">
+      <label for="orderSelect" class="form-label">Order:</label>
+      <select id="orderSelect" class="form-select w-100" v-model="sortDirection" @change="updateDisplay">
+        <option v-for="order in orders" :value="order.id">{{ order.name }}</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Textarea for input -->
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <textarea class="form-control" v-model="inputText" @input="updateDisplay"></textarea>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div id="display" ref="display" :style="{ fontFamily: selectedFont }" class="card-body">
+          <span class="d-block text-nowrap" style="overflow-x: hidden" v-for="line, index in sortedLines" :key="`${line}_${index}`">{{ line }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Display sorted lines -->
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <button class="btn btn-primary btn-block w-100" @click="copyText">Copy Text</button>
+    </div>
+      
+  </div>
+  <div class="row">
+    
+  </div>
+</div>
+
+</body>
+</html>
