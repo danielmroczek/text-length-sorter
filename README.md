@@ -2,6 +2,9 @@
 
 A web application that sorts text lines based on their visual length. Built with Vue.js and Bootstrap.
 
+## Demo
+Try it online: [Text Length Sorter](https://danielmroczek.github.io/text-length-sorter/)
+
 ## Features
 
 - Sort text lines by visual length considering the selected font
