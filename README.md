@@ -5,6 +5,9 @@ A web application that sorts text lines based on their visual length. Built with
 ## Demo
 Try it online: [Text Length Sorter](https://danielmroczek.github.io/text-length-sorter/)
 
+## Project Origin
+I once printed and hung a few lists of "important things" on my wall, like "albums I want to listen to" or "New Year’s resolutions". They looked flat and boring. Since they were on display, I figured I could make them more interesting by sorting the lines by length to form little "triangles". Doing that in Word turned out to be harder than I expected (or I just didn’t know how), so I built this tool to sort lists by line length instead. It works great for the formatting, but keeping those resolutions is a different story. 
+
 ## Features
 
 - Sort text lines by visual length considering the selected font
