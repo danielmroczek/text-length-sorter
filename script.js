@@ -1,40 +1,35 @@
+import { default as Alpine } from 'https://cdn.jsdelivr.net/npm/alpinejs@3.15.3/+esm';
 import Sorter from './sorter.js';
 
-new Vue({
-  el: '#app',
-  data: {
+// Expose Alpine globally for devtools (optional but handy) and register component.
+window.Alpine = Alpine;
+
+Alpine.data('textSorter', () => ({
     inputText: '',
     selectedFont: 'Arial, sans-serif',
     sortDirection: 'desc', // Default to descending order
     fonts: ['Arial, sans-serif', 'Verdana, sans-serif', 'Times New Roman, serif', 'Calibri, sans-serif', 'Cambria, serif'],
-    orders: [{
-      id: 'asc',
-      name: 'Ascending'
-    }, {
-      id: 'desc',
-      name: 'Descending'
-    }, 
-    {
-      id: 'hourglass',
-      name: 'Hourglass'
-    }, 
-    {
-      id: 'gaussian',
-      name: 'Gaussian'
-    }
-  ],
-    sortedLines: []
-  },
-  methods: {
+    orders: [
+      { id: 'asc', name: 'Ascending' },
+      { id: 'desc', name: 'Descending' },
+      { id: 'hourglass', name: 'Hourglass' },
+      { id: 'gaussian', name: 'Gaussian' }
+    ],
+    sortedLines: [],
+
+    init() {
+      this.updateDisplay();
+    },
+
     updateDisplay() {
-      // Update the display with the input text
-      
+      // Defer until DOM updates finish so measurements are accurate.
       this.$nextTick(() => {
         const lines = this.inputText.split('\n');
-        const sorter = new Sorter(this.getLineLength, lines);
+        const sorter = new Sorter(line => this.getLineLength(line), lines);
         this.sortedLines = sorter.sort(this.sortDirection);
       });
     },
+
     getLineLength(line) {
       const displayElement = this.$refs.display;
       const tempSpan = document.createElement('span');
@@ -47,9 +42,10 @@ new Vue({
       tempSpan.remove();
       return width;
     },
+
     async copyText() {
       const textToCopy = this.sortedLines.join('\n');
-      navigator.clipboard.writeText(textToCopy)
+      return navigator.clipboard.writeText(textToCopy)
         .then(() => {
           alert('Text copied to clipboard!');
         })
@@ -57,5 +53,6 @@ new Vue({
           console.error('Failed to copy text: ', error);
         });
     }
-  }
-});
+  }));
+
+Alpine.start();

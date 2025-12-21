@@ -1,6 +1,6 @@
 # Text Length Sorter
 
-A web application that sorts text lines based on their visual length. Built with Vue.js and Bootstrap.
+A web application that sorts text lines based on their visual length. Built with Alpine.js and Bootstrap.
 
 ## Demo
 Try it online: [Text Length Sorter](https://danielmroczek.github.io/text-length-sorter/)
@@ -36,6 +36,6 @@ I once printed and hung a few lists of "important things" on my wall, like "albu
 
 ## Technologies
 
-- Vue.js 2
+- Alpine.js
 - Bootstrap 5
 - ES6 Modules
