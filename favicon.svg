@@ -1,14 +1,12 @@
-<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    rect.bg { fill: #ffffff; }
-    rect.bar { fill: #007bff; }
-    @media (prefers-color-scheme: dark) {
-      rect.bg { fill: #212529; }
-      rect.bar { fill: #0d6efd; }
-    }
-  </style>
-  <rect class="bg" width="32" height="32" rx="4"/>
-  <rect class="bar" x="6" y="7" width="20" height="4" rx="1.5"/>
-  <rect class="bar" x="6" y="14" width="15" height="4" rx="1.5"/>
-  <rect class="bar" x="6" y="21" width="10" height="4" rx="1.5"/>
+<svg xmlns="http://www.w3.org/2000/svg" id="svg4" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="gradient" x1="15%" y1="15%" x2="85%" y2="85%">
+      <stop stop-color="#2979ff"></stop>
+      <stop offset="1" stop-color="#2962ff"></stop>
+    </linearGradient>
+  </defs>
+  <rect id="rect1" width="32" height="32" rx="4" fill="url(#gradient)" />
+  <path id="rect4"
+    d="M7.5 21h7c.831 0 1.5.669 1.5 1.5v1c0 .831-.669 1.5-1.5 1.5h-7c-.831 0-1.5-.669-1.5-1.5v-1c0-.831.669-1.5 1.5-1.5m0-7h12c.831 0 1.5.669 1.5 1.5v1c0 .831-.669 1.5-1.5 1.5h-12c-.831 0-1.5-.669-1.5-1.5v-1c0-.831.669-1.5 1.5-1.5m0-7h17c.831 0 1.5.669 1.5 1.5v1c0 .831-.669 1.5-1.5 1.5h-17C6.669 11 6 10.331 6 9.5v-1C6 7.669 6.669 7 7.5 7"
+    fill="white" />
 </svg>
